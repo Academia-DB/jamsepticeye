@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr6jdrbcxudyt"]
+
+[ext_resource type="Script" uid="uid://c0uywxcn42ayu" path="res://scripts/hud.gd" id="1_o8u2p"]
+[ext_resource type="Texture2D" uid="uid://csnaa7re1emgh" path="res://models/flare.png" id="1_s3k51"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_o8u2p")
+
+[node name="HealthOrb" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -120.0
+offset_right = 120.0
+offset_bottom = -20.0
+grow_vertical = 0
+texture = ExtResource("1_s3k51")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InventoryContainer" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Background" type="ColorRect" parent="InventoryContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.0705882)
+
+[node name="InventoryBar" type="HBoxContainer" parent="InventoryContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1

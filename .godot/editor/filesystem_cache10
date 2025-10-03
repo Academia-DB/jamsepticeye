@@ -1,0 +1,16 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1759462517
+icon.svg::CompressedTexture2D/CompressedTexture2D::468739959956325838::1759418640::1759418645::1::::<><><>0<>0<>7633dae8636ab429973028678de711cb<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+::res://models/::1759456498
+flare.png::CompressedTexture2D/CompressedTexture2D::6063079170899099523::1756168716::1759456498::1::::<><><>0<>0<>a176279bc95c99e389c430c5a264bbcd<>res://.godot/imported/flare.png-2ed87cda4cc7ec25f1961967dfff7a95.ctex::
+::res://scene/::1759461923
+hud.tscn::PackedScene::8417020808182473439::1759461923::0::1::::<><><>0<>0<><>::uid://c0uywxcn42ayu::::res://scripts/hud.gd<>uid://csnaa7re1emgh::::res://models/flare.png
+main.tscn::PackedScene::4783173199921781557::1759461923::0::1::::<><><>0<>0<><>::uid://ddt0cs2fv008f::::res://scene/temp.tscn<>uid://oqqn34cnf0ot::::res://scene/player.tscn<>uid://kl0qxenfc10x::::res://scripts/camera_3d.gd<>uid://dr6jdrbcxudyt::::res://scene/hud.tscn
+pickable_item.tscn::PackedScene::5121940062094070713::1759461923::0::1::::<><><>0<>0<><>::uid://b8jwvix4vjprn::::res://scripts/pickable_item.gd
+player.tscn::PackedScene::1016670057764038091::1759461923::0::1::::<><><>0<>0<><>::uid://cgcljhqbphc6v::::res://scripts/player.gd
+temp.tscn::PackedScene::7410574243113782083::1759461923::0::1::::<><><>0<>0<><>::
+::res://scripts/::1759461922
+camera_3d.gd::GDScript::726144304010344017::1759461922::0::1::::<>Camera3D<><>0<>0<><>::
+hud.gd::GDScript::6570347720467648524::1759460938::0::1::::<>CanvasLayer<><>0<>0<><>::
+pickable_item.gd::GDScript::4722605656110937475::1759459157::0::1::::<>StaticBody3D<><>0<>0<><>::
+player.gd::GDScript::5198787536234171779::1759461702::0::1::::<>CharacterBody3D<><>0<>0<><>::

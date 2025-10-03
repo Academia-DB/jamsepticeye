@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce8dus2gjsaij"]
+
+[ext_resource type="Script" uid="uid://b8jwvix4vjprn" path="res://scripts/pickable_item.gd" id="1_tk05o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ri23b"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_t8rkn"]
+
+[node name="PickableItem" type="StaticBody3D" groups=["pickable"]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_tk05o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ri23b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_t8rkn")

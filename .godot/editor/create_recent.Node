@@ -1,0 +1,11 @@
+MarginContainer
+ColorRect
+MeshInstance3D
+CollisionShape3D
+StaticBody3D
+HBoxContainer
+TextureRect
+CanvasLayer
+Area3D
+Camera3D
+CharacterBody3D
