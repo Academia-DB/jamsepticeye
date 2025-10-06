@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://c28ayep3c0fo"]
+
+[ext_resource type="Script" uid="uid://rirpuxae45r5" path="res://scripts/ghost.gd" id="1_2qtq6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6qaj3"]
+height = 3.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2qtq6"]
+height = 3.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2qtq6"]
+radius = 1.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wc8ux"]
+radius = 3.0
+
+[node name="Ghost" type="CharacterBody3D"]
+script = ExtResource("1_2qtq6")
+patrol_speed = 5.0
+chase_speed = 6.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("CapsuleShape3D_6qaj3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("CapsuleMesh_2qtq6")
+
+[node name="DamageArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("SphereShape3D_2qtq6")
+
+[node name="DetectionArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("SphereShape3D_wc8ux")

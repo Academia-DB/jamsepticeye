@@ -1,0 +1,13 @@
+res://scene/pickable_item.tscn
+res://scene/main.tscn
+res://scripts/game_manager.gd
+res://scripts/ghost_spawn.gd
+res://scripts/room_manager.gd
+res://scripts/player.gd
+res://scripts/pickable_item.gd
+res://scripts/hud.gd
+res://scripts/ghost.gd
+res://scene/death.tscn
+res://scripts/death.gd
+res://scene/main_menu.tscn
+res://scripts/main_menu.gd

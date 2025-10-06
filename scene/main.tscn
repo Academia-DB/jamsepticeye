@@ -1,41 +1,1000 @@
-[gd_scene load_steps=8 format=3 uid="uid://cafaftk55xccr"]
+[gd_scene load_steps=47 format=3 uid="uid://cafaftk55xccr"]
 
-[ext_resource type="PackedScene" uid="uid://ddt0cs2fv008f" path="res://scene/temp.tscn" id="1_v0l8b"]
+[ext_resource type="Script" uid="uid://xv7ps5q1cawy" path="res://scripts/room_manager.gd" id="1_0ha60"]
 [ext_resource type="PackedScene" uid="uid://oqqn34cnf0ot" path="res://scene/player.tscn" id="2_wp4xf"]
 [ext_resource type="Script" uid="uid://kl0qxenfc10x" path="res://scripts/camera_3d.gd" id="3_wp4xf"]
 [ext_resource type="PackedScene" uid="uid://dr6jdrbcxudyt" path="res://scene/hud.tscn" id="4_brvut"]
+[ext_resource type="Material" uid="uid://clsayy6yosryp" path="res://models/gym_floor.tres" id="6_of57s"]
+[ext_resource type="Material" uid="uid://c8ihfsq4kyjo8" path="res://models/dirty_floor.tres" id="7_b5f6u"]
+[ext_resource type="Material" uid="uid://cop73phgaou0l" path="res://models/clean_wall.tres" id="7_jcbur"]
+[ext_resource type="Material" uid="uid://wbqtnxg6pblv" path="res://models/cynderblock_wall.tres" id="7_tqoya"]
+[ext_resource type="Material" uid="uid://c2dh1o30lhbl8" path="res://models/tile_floor.tres" id="8_tqoya"]
+[ext_resource type="Material" uid="uid://dlfcyb7tqn83t" path="res://models/clean_floor.tres" id="9_smf0o"]
+[ext_resource type="Texture2D" uid="uid://dk4s0b7aeqhvp" path="res://models/WoodFloor040_1K-PNG_Color.png" id="11_v2gmf"]
+[ext_resource type="Texture2D" uid="uid://b8rqc636rdhnm" path="res://models/WoodFloor040_1K-PNG_AmbientOcclusion.png" id="12_jcbur"]
+[ext_resource type="Material" uid="uid://bsqyu34vvl48n" path="res://models/class_cinder.tres" id="12_smf0o"]
+[ext_resource type="Texture2D" uid="uid://wuv5txrvuxc4" path="res://models/Tiles043_1K-PNG_Color.png" id="13_gtqqq"]
+[ext_resource type="Texture2D" uid="uid://c8cc7ykjsmh2" path="res://models/WoodFloor040_1K-PNG_Displacement.png" id="13_smf0o"]
+[ext_resource type="Material" uid="uid://dt8310rneafqk" path="res://models/nurse_wall.tres" id="13_tv8i1"]
+[ext_resource type="Material" uid="uid://bhxnixqhrc4md" path="res://models/faculty_wall.tres" id="14_0vlqb"]
+[ext_resource type="Texture2D" uid="uid://7t0v53spnq38" path="res://models/Tiles043_1K-PNG_Displacement.png" id="14_gn2wi"]
+[ext_resource type="Texture2D" uid="uid://bppdsaoajqp3q" path="res://models/WoodFloor040_1K-PNG_NormalDX.png" id="14_tv8i1"]
+[ext_resource type="Texture2D" uid="uid://74qk1qk557r2" path="res://models/WoodFloor040_1K-PNG_Roughness.png" id="15_0vlqb"]
+[ext_resource type="Texture2D" uid="uid://dedorxfw4qly6" path="res://models/Tiles043_1K-PNG_NormalDX.png" id="15_p8adh"]
+[ext_resource type="Texture2D" uid="uid://b4g3hdinustb2" path="res://models/Tiles043_1K-PNG_Roughness.png" id="16_oldxj"]
+[ext_resource type="Material" uid="uid://c23hfebtifaov" path="res://models/cafe_wall.tres" id="17_gn2wi"]
+[ext_resource type="PackedScene" uid="uid://c28ayep3c0fo" path="res://scene/ghost.tscn" id="25_p8adh"]
+[ext_resource type="Script" uid="uid://66pudxnhn3ey" path="res://scripts/game_manager.gd" id="26_oldxj"]
+[ext_resource type="PackedScene" uid="uid://ce8dus2gjsaij" path="res://scene/pickable_item.tscn" id="27_4jm02"]
+[ext_resource type="Script" uid="uid://b60d3rxbyy6io" path="res://scripts/ghost_spawn.gd" id="27_vneqc"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wp4xf"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0ha60"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_brvut"]
-sky_material = SubResource("ProceduralSkyMaterial_wp4xf")
+[sub_resource type="Sky" id="Sky_4j5ol"]
+sky_material = SubResource("ProceduralSkyMaterial_0ha60")
 
-[sub_resource type="Environment" id="Environment_0ha60"]
-background_mode = 2
-sky = SubResource("Sky_brvut")
-tonemap_mode = 2
+[sub_resource type="Environment" id="Environment_p1hux"]
+background_mode = 1
+sky = SubResource("Sky_4j5ol")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.9
+tonemap_exposure = 0.23
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.3491902, 0.3491902, 0.3491902, 1)
+fog_density = 0.02
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4j5ol"]
+size = Vector3(50, 5, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ha60"]
+size = Vector3(10, 5, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p1hux"]
+size = Vector3(10, 5, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_of57s"]
+size = Vector3(10, 5, 70)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b5f6u"]
+size = Vector3(10, 5, 70)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k65ib"]
+size = Vector3(10, 5, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wscrc"]
+size = Vector3(10, 5, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mswub"]
+size = Vector3(10, 5, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hybxs"]
+size = Vector3(10, 5, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tqoya"]
+size = Vector3(10, 5, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v2gmf"]
+size = Vector3(45, 5, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4jm02"]
+albedo_color = Color(1, 1, 0.8361926, 1)
+albedo_texture = ExtResource("13_gtqqq")
+roughness_texture = ExtResource("16_oldxj")
+normal_enabled = true
+normal_texture = ExtResource("15_p8adh")
+heightmap_enabled = true
+heightmap_texture = ExtResource("14_gn2wi")
+uv1_scale = Vector3(5, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jcbur"]
+size = Vector3(25, 5, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_smf0o"]
+size = Vector3(20, 5, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tv8i1"]
+size = Vector3(90, 5, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gjnwh"]
+albedo_color = Color(0.8982046, 0.61569065, 0.48725075, 1)
+albedo_texture = ExtResource("11_v2gmf")
+roughness_texture = ExtResource("15_0vlqb")
+normal_enabled = true
+normal_texture = ExtResource("14_tv8i1")
+ao_enabled = true
+ao_texture = ExtResource("12_jcbur")
+heightmap_enabled = true
+heightmap_texture = ExtResource("13_smf0o")
+uv1_scale = Vector3(4, 4, 1)
 
 [node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_0ha60")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
-
-[node name="Temp" parent="." instance=ExtResource("1_v0l8b")]
+environment = SubResource("Environment_p1hux")
 
 [node name="Player" parent="." instance=ExtResource("2_wp4xf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.5470371)
 walk_speed = 6.0
 sprint_speed = 10.0
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
-transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 4, 4, 4)
+transform = Transform3D(0.7071068, -0.35355324, 0.6123726, 0, 0.86602557, 0.49999976, -0.7071068, -0.35355324, 0.6123726, 4, 4, 10.008215)
 script = ExtResource("3_wp4xf")
 target = NodePath("../Player")
 
 [node name="HUD" parent="." instance=ExtResource("4_brvut")]
+
+[node name="RoomManager" type="Node3D" parent="." node_paths=PackedStringArray("rooms", "starting_room")]
+script = ExtResource("1_0ha60")
+rooms = [NodePath("../Rooms/Gym"), NodePath("../Rooms/HallwayWest"), NodePath("../Rooms/HallwayEast"), NodePath("../Rooms/HallwaySouth"), NodePath("../Rooms/HallwayNorth"), NodePath("../Rooms/Stairwell"), NodePath("../Rooms/Stairwell2"), NodePath("../Rooms/Bathroom"), NodePath("../Rooms/Bathroom2"), NodePath("../Rooms/Classroom"), NodePath("../Rooms/Classroom2"), NodePath("../Rooms/Cafeteria"), NodePath("../Rooms/Nurse"), NodePath("../Rooms/Faculty"), NodePath("../Rooms/Library")]
+starting_room = NodePath("../Rooms/Gym")
+
+[node name="Rooms" type="Node3D" parent="."]
+
+[node name="Gym" type="Node3D" parent="Rooms"]
+
+[node name="Trigger" type="Area3D" parent="Rooms/Gym"]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Gym/Trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_4j5ol")
+
+[node name="GymLight" type="DirectionalLight3D" parent="Rooms/Gym"]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 10, 0)
+light_energy = 1.5
+
+[node name="Floor" type="CSGBox3D" parent="Rooms/Gym"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+size = Vector3(50, 0.2, 50)
+material = ExtResource("6_of57s")
+
+[node name="WallLeft" type="CSGBox3D" parent="Rooms/Gym/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1.5, -24.9)
+use_collision = true
+size = Vector3(22, 3, 0.2)
+material = ExtResource("7_jcbur")
+
+[node name="WallLeft2" type="CSGBox3D" parent="Rooms/Gym/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1.5, -24.9)
+use_collision = true
+size = Vector3(22, 3, 0.2)
+material = ExtResource("7_jcbur")
+
+[node name="WallRight" type="CSGBox3D" parent="Rooms/Gym/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1.5, 24.9)
+use_collision = true
+size = Vector3(22, 3, 0.2)
+material = ExtResource("7_jcbur")
+
+[node name="WallRight2" type="CSGBox3D" parent="Rooms/Gym/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1.5, 24.9)
+use_collision = true
+size = Vector3(22, 3, 0.2)
+material = ExtResource("7_jcbur")
+
+[node name="WallBottom" type="CSGBox3D" parent="Rooms/Gym/Floor"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24.9, 1.5, -14)
+use_collision = true
+size = Vector3(22, 3, 0.2)
+material = ExtResource("7_jcbur")
+
+[node name="WallBottom2" type="CSGBox3D" parent="Rooms/Gym/Floor"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24.9, 1.5, 14)
+use_collision = true
+size = Vector3(22, 3, 0.2)
+material = ExtResource("7_jcbur")
+
+[node name="WallTop" type="CSGBox3D" parent="Rooms/Gym/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 24.9, 1.5, 0)
+use_collision = true
+size = Vector3(50, 3, 0.2)
+material = ExtResource("7_jcbur")
+
+[node name="HallwayWest" type="Node3D" parent="Rooms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
+
+[node name="Trigger" type="Area3D" parent="Rooms/HallwayWest"]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/HallwayWest/Trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_0ha60")
+
+[node name="HallLight" type="DirectionalLight3D" parent="Rooms/HallwayWest"]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 5, 0)
+light_energy = 1.5
+
+[node name="Floor" type="CSGBox3D" parent="Rooms/HallwayWest"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+size = Vector3(50, 0.2, 10)
+material = ExtResource("9_smf0o")
+
+[node name="WallLeft" type="CSGBox3D" parent="Rooms/HallwayWest"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.9, 1.5, -15)
+use_collision = true
+size = Vector3(20, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallLeft2" type="CSGBox3D" parent="Rooms/HallwayWest"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.9000015, 1.5, 4.899994)
+use_collision = true
+size = Vector3(10.200012, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallLeft3" type="CSGBox3D" parent="Rooms/HallwayWest"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.9000015, 1.5, 20.11267)
+use_collision = true
+size = Vector3(10.225342, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallRight" type="CSGBox3D" parent="Rooms/HallwayWest"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.9, 1.5, -14)
+use_collision = true
+size = Vector3(22, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallRight2" type="CSGBox3D" parent="Rooms/HallwayWest"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.9, 1.5, 14)
+use_collision = true
+size = Vector3(22, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="Door3" type="CSGBox3D" parent="Rooms/HallwayWest"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.9000015, 1.5, 12.5)
+use_collision = true
+size = Vector3(5, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="HallwayEast" type="Node3D" parent="Rooms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+
+[node name="Trigger" type="Area3D" parent="Rooms/HallwayEast"]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/HallwayEast/Trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_p1hux")
+
+[node name="HallLight" type="DirectionalLight3D" parent="Rooms/HallwayEast"]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 5, 0)
+light_energy = 1.5
+
+[node name="Floor" type="CSGBox3D" parent="Rooms/HallwayEast"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+size = Vector3(50, 0.2, 10)
+material = ExtResource("9_smf0o")
+
+[node name="WallLeft" type="CSGBox3D" parent="Rooms/HallwayEast"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.9, 1.5, -14)
+use_collision = true
+size = Vector3(22, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallLeft2" type="CSGBox3D" parent="Rooms/HallwayEast"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.9, 1.5, 14)
+use_collision = true
+size = Vector3(22, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallRight" type="CSGBox3D" parent="Rooms/HallwayEast"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.9000015, 1.5, 0)
+use_collision = true
+size = Vector3(50, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="HallwaySouth" type="Node3D" parent="Rooms"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 30)
+
+[node name="Trigger" type="Area3D" parent="Rooms/HallwaySouth"]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/HallwaySouth/Trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_of57s")
+
+[node name="HallLight" type="DirectionalLight3D" parent="Rooms/HallwaySouth"]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 5, 0)
+light_energy = 1.5
+
+[node name="Floor" type="CSGBox3D" parent="Rooms/HallwaySouth"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+size = Vector3(70, 0.2, 10)
+material = ExtResource("9_smf0o")
+
+[node name="WallNorth" type="CSGBox3D" parent="Rooms/HallwaySouth"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 1.5, -14.09787)
+use_collision = true
+size = Vector3(22.19574, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallNorth2" type="CSGBox3D" parent="Rooms/HallwaySouth"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 1.5, 14.080811)
+use_collision = true
+size = Vector3(22.161621, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallSouth" type="CSGBox3D" parent="Rooms/HallwaySouth"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.9000015, 1.5, -16.44884)
+use_collision = true
+size = Vector3(26.897675, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallSouth2" type="CSGBox3D" parent="Rooms/HallwaySouth"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.8999977, 1.5, 14.099309)
+use_collision = true
+size = Vector3(22.2, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallSouth3" type="CSGBox3D" parent="Rooms/HallwaySouth"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.8999977, 1.5, 32.553497)
+use_collision = true
+size = Vector3(4.9, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallWest" type="CSGBox3D" parent="Rooms/HallwaySouth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 1.5, -34.9)
+use_collision = true
+size = Vector3(5, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallEast" type="CSGBox3D" parent="Rooms/HallwaySouth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5484848, 1.5, 34.9)
+use_collision = true
+size = Vector3(4.9, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="Door8" type="CSGBox3D" parent="Rooms/HallwaySouth"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.9140396, 1.5, 0.048674844)
+use_collision = true
+size = Vector3(8, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="Door4" type="CSGBox3D" parent="Rooms/HallwaySouth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3712502, 1.5, -34.9)
+use_collision = true
+size = Vector3(5, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="Door6" type="CSGBox3D" parent="Rooms/HallwaySouth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.463831, 1.5, 34.904747)
+use_collision = true
+size = Vector3(6, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="HallwayNorth" type="Node3D" parent="Rooms"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -30)
+
+[node name="Trigger" type="Area3D" parent="Rooms/HallwayNorth"]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/HallwayNorth/Trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_b5f6u")
+
+[node name="HallLight" type="DirectionalLight3D" parent="Rooms/HallwayNorth"]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 5, 0)
+light_energy = 1.5
+
+[node name="Floor" type="CSGBox3D" parent="Rooms/HallwayNorth"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+size = Vector3(70, 0.2, 10)
+material = ExtResource("9_smf0o")
+
+[node name="WallNorth" type="CSGBox3D" parent="Rooms/HallwayNorth"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.8999977, 1.5, -32.551598)
+use_collision = true
+size = Vector3(4.9, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallNorth2" type="CSGBox3D" parent="Rooms/HallwayNorth"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.8999977, 1.5, -22.489367)
+use_collision = true
+size = Vector3(5.420474, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallNorth3" type="CSGBox3D" parent="Rooms/HallwayNorth"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.9000015, 1.5, -5.027815)
+use_collision = true
+size = Vector3(20.49466, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallNorth4" type="CSGBox3D" parent="Rooms/HallwayNorth"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.9000015, 1.5, 19.808092)
+use_collision = true
+size = Vector3(20.178532, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallSouth" type="CSGBox3D" parent="Rooms/HallwayNorth"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.9, 1.5, 0)
+use_collision = true
+size = Vector3(50.4, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallWest" type="CSGBox3D" parent="Rooms/HallwayNorth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, -34.9)
+use_collision = true
+size = Vector3(5, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallEast" type="CSGBox3D" parent="Rooms/HallwayNorth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, 34.9)
+use_collision = true
+size = Vector3(5, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="Door7" type="CSGBox3D" parent="Rooms/HallwayNorth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3118973, 1.5, 34.904747)
+use_collision = true
+size = Vector3(6, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="Door1" type="CSGBox3D" parent="Rooms/HallwayNorth"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.9000015, 1.5, -17.5)
+use_collision = true
+size = Vector3(5, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="Door2" type="CSGBox3D" parent="Rooms/HallwayNorth"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.9000015, 1.5, 32.380295)
+use_collision = true
+size = Vector3(5, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="Stairwell" type="Node3D" parent="Rooms"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -30, 0, -40)
+
+[node name="Trigger" type="Area3D" parent="Rooms/Stairwell"]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Stairwell/Trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_k65ib")
+
+[node name="StairLight" type="DirectionalLight3D" parent="Rooms/Stairwell"]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 3, 0)
+light_energy = 1.5
+
+[node name="Floor" type="CSGBox3D" parent="Rooms/Stairwell"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+size = Vector3(10, 0.2, 10)
+material = ExtResource("8_tqoya")
+
+[node name="WallWest" type="CSGBox3D" parent="Rooms/Stairwell/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.9, 1.5, 0)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallEast" type="CSGBox3D" parent="Rooms/Stairwell/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.9, 1.5, 0)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallNorth" type="CSGBox3D" parent="Rooms/Stairwell/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4.9)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallSouth" type="CSGBox3D" parent="Rooms/Stairwell/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.549, 1.5, -4.9)
+use_collision = true
+size = Vector3(4.893359, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="Stairwell2" type="Node3D" parent="Rooms"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 30, 0, 40)
+
+[node name="Trigger" type="Area3D" parent="Rooms/Stairwell2"]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Stairwell2/Trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_wscrc")
+
+[node name="StairLight" type="DirectionalLight3D" parent="Rooms/Stairwell2"]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 3, 0)
+light_energy = 1.5
+
+[node name="Floor" type="CSGBox3D" parent="Rooms/Stairwell2"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+size = Vector3(10, 0.2, 10)
+material = ExtResource("8_tqoya")
+
+[node name="WallWest" type="CSGBox3D" parent="Rooms/Stairwell2/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.9, 1.5, 0)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallEast" type="CSGBox3D" parent="Rooms/Stairwell2/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.9, 1.5, 0)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallNorth" type="CSGBox3D" parent="Rooms/Stairwell2/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4.9)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallSouth" type="CSGBox3D" parent="Rooms/Stairwell2/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.549, 1.5, -4.9)
+use_collision = true
+size = Vector3(4.893359, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="Bathroom" type="Node3D" parent="Rooms"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -30, 0, 40)
+
+[node name="Trigger" type="Area3D" parent="Rooms/Bathroom"]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Bathroom/Trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_mswub")
+
+[node name="BathroomLight" type="DirectionalLight3D" parent="Rooms/Bathroom"]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 3, 0)
+light_energy = 1.5
+
+[node name="Floor" type="CSGBox3D" parent="Rooms/Bathroom"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+size = Vector3(10, 0.2, 10)
+material = ExtResource("7_b5f6u")
+
+[node name="WallWest" type="CSGBox3D" parent="Rooms/Bathroom/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.9, 1.5, 0)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("7_b5f6u")
+
+[node name="WallEast" type="CSGBox3D" parent="Rooms/Bathroom/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.9, 1.5, 0)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("7_b5f6u")
+
+[node name="WallSouth" type="CSGBox3D" parent="Rooms/Bathroom/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4.9)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("7_b5f6u")
+
+[node name="WallNorth" type="CSGBox3D" parent="Rooms/Bathroom/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.549, 1.5, -4.9)
+use_collision = true
+size = Vector3(4.893359, 3, 0.2)
+material = ExtResource("7_b5f6u")
+
+[node name="Bathroom2" type="Node3D" parent="Rooms"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 30, 0, -40)
+
+[node name="Trigger" type="Area3D" parent="Rooms/Bathroom2"]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Bathroom2/Trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_hybxs")
+
+[node name="BathroomLight" type="DirectionalLight3D" parent="Rooms/Bathroom2"]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 3, 0)
+light_energy = 1.5
+
+[node name="Floor" type="CSGBox3D" parent="Rooms/Bathroom2"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+size = Vector3(10, 0.2, 10)
+material = ExtResource("7_b5f6u")
+
+[node name="WallWest" type="CSGBox3D" parent="Rooms/Bathroom2/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.9, 1.5, 0)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("7_b5f6u")
+
+[node name="WallEast" type="CSGBox3D" parent="Rooms/Bathroom2/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.9, 1.5, 0)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("7_b5f6u")
+
+[node name="WallSouth" type="CSGBox3D" parent="Rooms/Bathroom2/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4.9)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("7_b5f6u")
+
+[node name="WallNorth" type="CSGBox3D" parent="Rooms/Bathroom2/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.549, 1.5, -4.9)
+use_collision = true
+size = Vector3(4.893359, 3, 0.2)
+material = ExtResource("7_b5f6u")
+
+[node name="Classroom" type="Node3D" parent="Rooms"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12.5, 0, -40)
+
+[node name="Trigger" type="Area3D" parent="Rooms/Classroom"]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Classroom/Trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_tqoya")
+
+[node name="ClassLight" type="DirectionalLight3D" parent="Rooms/Classroom"]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 3, 0)
+light_energy = 1.5
+
+[node name="Floor" type="CSGBox3D" parent="Rooms/Classroom"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+size = Vector3(25, 0.2, 10)
+material = ExtResource("9_smf0o")
+
+[node name="WallWest" type="CSGBox3D" parent="Rooms/Classroom/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12.4, 1.5, 0)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("12_smf0o")
+
+[node name="WallEast" type="CSGBox3D" parent="Rooms/Classroom/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -12.4, 1.5, 0)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("12_smf0o")
+
+[node name="WallNorth" type="CSGBox3D" parent="Rooms/Classroom/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4.9)
+use_collision = true
+size = Vector3(25, 3, 0.2)
+material = ExtResource("12_smf0o")
+
+[node name="WallSouth" type="CSGBox3D" parent="Rooms/Classroom/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.879549, 1.5, -4.899994)
+use_collision = true
+size = Vector3(5.1990967, 3, 0.2)
+material = ExtResource("12_smf0o")
+
+[node name="WallSouth2" type="CSGBox3D" parent="Rooms/Classroom/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8598013, 1.5, -4.9000015)
+use_collision = true
+size = Vector3(15.2803955, 3, 0.2)
+material = ExtResource("12_smf0o")
+
+[node name="Classroom2" type="Node3D" parent="Rooms"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12.5, 0, -40)
+
+[node name="Trigger" type="Area3D" parent="Rooms/Classroom2"]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Classroom2/Trigger"]
+shape = SubResource("BoxShape3D_tqoya")
+
+[node name="ClassLight" type="DirectionalLight3D" parent="Rooms/Classroom2"]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 3, 0)
+light_energy = 1.5
+
+[node name="Floor" type="CSGBox3D" parent="Rooms/Classroom2"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+size = Vector3(25, 0.2, 10)
+material = ExtResource("9_smf0o")
+
+[node name="WallWest" type="CSGBox3D" parent="Rooms/Classroom2/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12.4, 1.5, 0)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("12_smf0o")
+
+[node name="WallEast" type="CSGBox3D" parent="Rooms/Classroom2/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -12.4, 1.5, 0)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("12_smf0o")
+
+[node name="WallNorth" type="CSGBox3D" parent="Rooms/Classroom2/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4.9)
+use_collision = true
+size = Vector3(25, 3, 0.2)
+material = ExtResource("12_smf0o")
+
+[node name="WallSouth" type="CSGBox3D" parent="Rooms/Classroom2/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.879549, 1.5, -4.899994)
+use_collision = true
+size = Vector3(5.1990967, 3, 0.2)
+material = ExtResource("12_smf0o")
+
+[node name="WallSouth2" type="CSGBox3D" parent="Rooms/Classroom2/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8598013, 1.5, -4.9000015)
+use_collision = true
+size = Vector3(15.2803955, 3, 0.2)
+material = ExtResource("12_smf0o")
+
+[node name="Cafeteria" type="Node3D" parent="Rooms"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -40, 0, -22.5)
+
+[node name="Trigger" type="Area3D" parent="Rooms/Cafeteria"]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Cafeteria/Trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_v2gmf")
+
+[node name="CafeLight" type="DirectionalLight3D" parent="Rooms/Cafeteria"]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 3, 0)
+light_energy = 1.5
+
+[node name="Floor" type="CSGBox3D" parent="Rooms/Cafeteria"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+size = Vector3(10, 0.2, 45)
+material = SubResource("StandardMaterial3D_4jm02")
+
+[node name="WallWest" type="CSGBox3D" parent="Rooms/Cafeteria/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 1.5, 0)
+use_collision = true
+size = Vector3(45, 3, 0.2)
+material = ExtResource("17_gn2wi")
+
+[node name="WallEast" type="CSGBox3D" parent="Rooms/Cafeteria/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.9, 1.5, 15)
+use_collision = true
+size = Vector3(15, 3, 0.2)
+material = ExtResource("17_gn2wi")
+
+[node name="WallEast2" type="CSGBox3D" parent="Rooms/Cafeteria/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.9, 1.5, -7.5)
+use_collision = true
+size = Vector3(20, 3, 0.2)
+material = ExtResource("17_gn2wi")
+
+[node name="WallNorth" type="CSGBox3D" parent="Rooms/Cafeteria/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 22.4)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("17_gn2wi")
+
+[node name="WallNorth2" type="CSGBox3D" parent="Rooms/Cafeteria/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 10)
+use_collision = true
+size = Vector3(8, 3, 0.2)
+material = ExtResource("17_gn2wi")
+
+[node name="WallSouth" type="CSGBox3D" parent="Rooms/Cafeteria/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -22.4)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("17_gn2wi")
+
+[node name="Door5" type="CSGBox3D" parent="Rooms/Cafeteria"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 9.999266, 1.5, -2.4785233)
+use_collision = true
+size = Vector3(5, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="Nurse" type="Node3D" parent="Rooms"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -40, 0, 12.5)
+
+[node name="Trigger" type="Area3D" parent="Rooms/Nurse"]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Nurse/Trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_jcbur")
+
+[node name="NurseLight" type="DirectionalLight3D" parent="Rooms/Nurse"]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 3, 0)
+light_energy = 1.5
+
+[node name="Floor" type="CSGBox3D" parent="Rooms/Nurse"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+size = Vector3(10, 0.2, 25)
+material = ExtResource("8_tqoya")
+
+[node name="WallWest" type="CSGBox3D" parent="Rooms/Nurse/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.9, 1.5, 0)
+use_collision = true
+size = Vector3(25, 3, 0.2)
+material = ExtResource("13_tv8i1")
+
+[node name="WallEast" type="CSGBox3D" parent="Rooms/Nurse/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.9000015, 1.5, 7.490289)
+use_collision = true
+size = Vector3(9.978516, 3, 0.2)
+material = ExtResource("13_tv8i1")
+
+[node name="WallEast2" type="CSGBox3D" parent="Rooms/Nurse/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.9, 1.5, -7.49)
+use_collision = true
+size = Vector3(9.978516, 3, 0.2)
+material = ExtResource("13_tv8i1")
+
+[node name="WallNorth" type="CSGBox3D" parent="Rooms/Nurse/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 12.4)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("13_tv8i1")
+
+[node name="WallSouth" type="CSGBox3D" parent="Rooms/Nurse/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -12.4)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("13_tv8i1")
+
+[node name="Faculty" type="Node3D" parent="Rooms"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -40, 0, 35)
+
+[node name="Trigger" type="Area3D" parent="Rooms/Faculty"]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Faculty/Trigger"]
+shape = SubResource("BoxShape3D_smf0o")
+
+[node name="FacultyLight" type="DirectionalLight3D" parent="Rooms/Faculty"]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 3, 0)
+light_energy = 1.5
+
+[node name="Floor" type="CSGBox3D" parent="Rooms/Faculty"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+size = Vector3(10, 0.2, 20)
+material = ExtResource("8_tqoya")
+
+[node name="WallWest" type="CSGBox3D" parent="Rooms/Faculty/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.9, 1.5, 0)
+use_collision = true
+size = Vector3(20, 3, 0.2)
+material = ExtResource("14_0vlqb")
+
+[node name="WallEast" type="CSGBox3D" parent="Rooms/Faculty/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.9000015, 1.5, -2.53434)
+use_collision = true
+size = Vector3(14.915817, 3, 0.2)
+material = ExtResource("14_0vlqb")
+
+[node name="WallNorth" type="CSGBox3D" parent="Rooms/Faculty/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 9.9)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("14_0vlqb")
+
+[node name="WallSouth" type="CSGBox3D" parent="Rooms/Faculty/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -9.9)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+material = ExtResource("14_0vlqb")
+
+[node name="Library" type="Node3D" parent="Rooms"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 40, 0, 0)
+
+[node name="Trigger" type="Area3D" parent="Rooms/Library"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.185568e-07, 0, 5)
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Library/Trigger"]
+shape = SubResource("BoxShape3D_tv8i1")
+
+[node name="LibraryLight" type="DirectionalLight3D" parent="Rooms/Library"]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 3, 5)
+light_energy = 1.5
+
+[node name="Floor" type="CSGBox3D" parent="Rooms/Library"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.185568e-07, 0, 5)
+size = Vector3(20, 0.2, 90)
+material = SubResource("StandardMaterial3D_gjnwh")
+
+[node name="WallWest" type="CSGBox3D" parent="Rooms/Library/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 9.9, 1.5, 0)
+use_collision = true
+size = Vector3(50, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallWest2" type="CSGBox3D" parent="Rooms/Library/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 9.899998, 1.5, 37.5)
+use_collision = true
+size = Vector3(15, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallWest3" type="CSGBox3D" parent="Rooms/Library/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 9.900005, 1.5, -37.54883)
+use_collision = true
+size = Vector3(14.9, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallEast" type="CSGBox3D" parent="Rooms/Library/Floor"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -9.9, 1.5, 0)
+use_collision = true
+size = Vector3(90, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallNorth" type="CSGBox3D" parent="Rooms/Library/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 44.9)
+use_collision = true
+size = Vector3(20, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="WallSouth" type="CSGBox3D" parent="Rooms/Library/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -44.9)
+use_collision = true
+size = Vector3(20, 3, 0.2)
+material = ExtResource("7_tqoya")
+
+[node name="GameManager" type="Node3D" parent="." node_paths=PackedStringArray("player", "ghost_spawner", "key_1_spawn_points", "key_2_spawn_points", "doors_wave_1", "doors_wave_2", "doors_wave_3", "exit_key_spawn_points")]
+script = ExtResource("26_oldxj")
+player = NodePath("../Player")
+ghost_spawner = NodePath("../GhostSpawner")
+key_scene = ExtResource("27_4jm02")
+key_1_spawn_points = [NodePath("../KeySpawns/Class2"), NodePath("../KeySpawns/Bathroom2"), NodePath("../KeySpawns/Cafe1")]
+key_2_spawn_points = [NodePath("../KeySpawns/Class1"), NodePath("../KeySpawns/Nurse"), NodePath("../KeySpawns/Bathroom1")]
+doors_wave_1 = [NodePath("../Rooms/HallwayNorth/Door1"), NodePath("../Rooms/HallwayNorth/Door2"), NodePath("../Rooms/HallwayWest/Door3")]
+doors_wave_2 = [NodePath("../Rooms/HallwaySouth/Door4"), NodePath("../Rooms/Cafeteria/Door5"), NodePath("../Rooms/HallwaySouth/Door6"), NodePath("../Rooms/HallwayNorth/Door7")]
+doors_wave_3 = [NodePath("../Rooms/HallwaySouth/Door8")]
+exit_key_spawn_points = [NodePath("../KeySpawns/Library"), NodePath("../KeySpawns/Faculty"), NodePath("../KeySpawns/Cafe2")]
+
+[node name="KeySpawns" type="Node3D" parent="."]
+
+[node name="Class2" type="Marker3D" parent="KeySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.535568, -3.8146973e-06, -39.71206)
+
+[node name="Bathroom2" type="Marker3D" parent="KeySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.671307, -3.8146973e-06, 41.226105)
+
+[node name="Cafe1" type="Marker3D" parent="KeySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.380013, -3.8146973e-06, -10.224766)
+
+[node name="Class1" type="Marker3D" parent="KeySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.464432, -3.8146973e-06, -39.71206)
+
+[node name="Bathroom1" type="Marker3D" parent="KeySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.339119, -3.8146973e-06, -39.71206)
+
+[node name="Nurse" type="Marker3D" parent="KeySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.380013, -3.8146973e-06, 12.775234)
+
+[node name="Library" type="Marker3D" parent="KeySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.619987, -3.8146973e-06, -0.22476578)
+
+[node name="Faculty" type="Marker3D" parent="KeySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.380013, -3.8146973e-06, 38.775234)
+
+[node name="Cafe2" type="Marker3D" parent="KeySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.380013, -3.8146973e-06, -40.224766)
+
+[node name="GhostPatrolPoints" type="Node3D" parent="."]
+
+[node name="PatrolPoint1" type="Marker3D" parent="GhostPatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -30)
+
+[node name="PatrolPoint2" type="Marker3D" parent="GhostPatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
+
+[node name="PatrolPoint3" type="Marker3D" parent="GhostPatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -30)
+
+[node name="PatrolPoint4" type="Marker3D" parent="GhostPatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -15)
+
+[node name="PatrolPoint5" type="Marker3D" parent="GhostPatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 15)
+
+[node name="PatrolPoint6" type="Marker3D" parent="GhostPatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 30)
+
+[node name="PatrolPoint7" type="Marker3D" parent="GhostPatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
+
+[node name="PatrolPoint8" type="Marker3D" parent="GhostPatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 30)
+
+[node name="PatrolPoint9" type="Marker3D" parent="GhostPatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 15)
+
+[node name="PatrolPoint10" type="Marker3D" parent="GhostPatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -15)
+
+[node name="GhostSpawner" type="Node3D" parent="." node_paths=PackedStringArray("spawn_markers", "patrol_markers")]
+script = ExtResource("27_vneqc")
+ghost_scene = ExtResource("25_p8adh")
+spawn_markers = [NodePath("../GhostPatrolPoints/PatrolPoint1"), NodePath("../GhostPatrolPoints/PatrolPoint3"), NodePath("../GhostPatrolPoints/PatrolPoint6"), NodePath("../GhostPatrolPoints/PatrolPoint8")]
+patrol_markers = [NodePath("../GhostPatrolPoints/PatrolPoint1"), NodePath("../GhostPatrolPoints/PatrolPoint2"), NodePath("../GhostPatrolPoints/PatrolPoint3"), NodePath("../GhostPatrolPoints/PatrolPoint4"), NodePath("../GhostPatrolPoints/PatrolPoint5"), NodePath("../GhostPatrolPoints/PatrolPoint6"), NodePath("../GhostPatrolPoints/PatrolPoint7"), NodePath("../GhostPatrolPoints/PatrolPoint8"), NodePath("../GhostPatrolPoints/PatrolPoint9"), null]

@@ -7,12 +7,14 @@
 [sub_resource type="BoxMesh" id="BoxMesh_t8rkn"]
 
 [node name="PickableItem" type="StaticBody3D" groups=["pickable"]]
-collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_tk05o")
+is_key = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_ri23b")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_t8rkn")

@@ -1,9 +1,11 @@
 extends StaticBody3D
 
 # Item properties
-@export var item_name: String = "Item"
-@export var icon: Texture2D  # Assign in the editor
+@export var item_name: String = "Key"
+@export var icon: Texture2D
 @export var item_description: String = ""
+@export var is_key: bool = false
+@export var key_number: int = 0  # 1, 2, 3, or 4 (exit key)
 
 # Visual feedback
 @export var hover_height: float = 0.3
@@ -16,6 +18,10 @@ var time_passed: float = 0.0
 func _ready():
 	# Add to pickable group
 	add_to_group("pickable")
+	
+	# Add to key group if this is a key
+	if is_key:
+		add_to_group("key")
 	
 	# Store initial position
 	initial_y = position.y

@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="SchoolMysteries"
-run/main_scene="uid://cafaftk55xccr"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+run/main_scene="uid://bggqp60ie2p3t"
+config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [global_group]

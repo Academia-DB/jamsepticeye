@@ -9,37 +9,21 @@ extends CanvasLayer
 @export var min_orb_size: float = 20.0
 
 # Inventory settings
-@export var inventory_slots: int = 8
 var inventory_items: Array = []
-
-# We'll create slots programmatically, no need for a separate scene
+var inventory_slot_nodes: Array = []
 
 func _ready():
-	setup_inventory_bar()
-	
 	# Connect to player signals
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		player.health_changed.connect(_on_player_health_changed)
 		player.item_picked_up.connect(_on_item_picked_up)
 
-func setup_inventory_bar():
-	# Clear existing slots
-	for child in inventory_bar.get_children():
-		child.queue_free()
-	
-	# Create inventory slots
-	for i in range(inventory_slots):
-		var slot = create_inventory_slot(i)
-		inventory_bar.add_child(slot)
-		inventory_items.append(null)
-
 func create_inventory_slot(index: int) -> Panel:
 	var slot = Panel.new()
 	slot.custom_minimum_size = Vector2(64, 64)
 	slot.name = "Slot" + str(index)
 	
-	# Add a TextureRect for the item icon
 	var texture_rect = TextureRect.new()
 	texture_rect.name = "ItemIcon"
 	texture_rect.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
@@ -48,7 +32,6 @@ func create_inventory_slot(index: int) -> Panel:
 	texture_rect.anchor_bottom = 1.0
 	slot.add_child(texture_rect)
 	
-	# Add a label for item count (optional)
 	var label = Label.new()
 	label.name = "CountLabel"
 	label.text = ""
@@ -61,18 +44,15 @@ func create_inventory_slot(index: int) -> Panel:
 	return slot
 
 func _on_player_health_changed(current_health: int, max_health: int):
-	# Calculate size based on health percentage
 	var health_percent = float(current_health) / float(max_health)
 	var new_size = lerp(min_orb_size, max_orb_size, health_percent)
 	
-	# Animate the size change
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_ELASTIC)
 	tween.tween_property(health_orb, "custom_minimum_size", Vector2(new_size, new_size), 0.3)
 	tween.parallel().tween_property(health_orb, "size", Vector2(new_size, new_size), 0.3)
 	
-	# Optional: Change color based on health
 	var color = Color.WHITE
 	if health_percent <= 0.25:
 		color = Color.RED
@@ -82,39 +62,50 @@ func _on_player_health_changed(current_health: int, max_health: int):
 	tween.parallel().tween_property(health_orb, "modulate", color, 0.2)
 
 func _on_item_picked_up(item):
-	# Find first empty slot
-	for i in range(inventory_items.size()):
-		if inventory_items[i] == null:
-			add_item_to_slot(i, item)
-			break
+	var slot_index = inventory_items.size()
+	var slot = create_inventory_slot(slot_index)
+	inventory_bar.add_child(slot)
+	inventory_slot_nodes.append(slot)
+	inventory_items.append(item)
+	
+	var icon_node = slot.get_node("ItemIcon")
+	
+	# Check if item has icon property
+	if "icon" in item and item.icon:
+		icon_node.texture = item.icon
+	
+	# Animate
+	icon_node.modulate.a = 0
+	var tween = create_tween()
+	tween.tween_property(icon_node, "modulate:a", 1.0, 0.3)
+	tween.parallel().tween_property(icon_node, "scale", Vector2(1.2, 1.2), 0.15)
+	tween.tween_property(icon_node, "scale", Vector2.ONE, 0.15)
 
 func add_item_to_slot(slot_index: int, item):
 	inventory_items[slot_index] = item
 	
-	# Update visual
 	var slot = inventory_bar.get_child(slot_index)
-	var icon = slot.get_node("ItemIcon")
+	var icon_node = slot.get_node("ItemIcon")
 	
-	# Assuming item has an icon texture
-	if item.has("icon"):
-		icon.texture = item.icon
+	if "icon" in item and item.icon:
+		icon_node.texture = item.icon
 	
-	# Animate the item appearing
-	icon.modulate.a = 0
+	icon_node.modulate.a = 0
 	var tween = create_tween()
-	tween.tween_property(icon, "modulate:a", 1.0, 0.3)
-	tween.parallel().tween_property(icon, "scale", Vector2(1.2, 1.2), 0.15)
-	tween.tween_property(icon, "scale", Vector2.ONE, 0.15)
+	tween.tween_property(icon_node, "modulate:a", 1.0, 0.3)
+	tween.parallel().tween_property(icon_node, "scale", Vector2(1.2, 1.2), 0.15)
+	tween.tween_property(icon_node, "scale", Vector2.ONE, 0.15)
 
 func remove_item_from_slot(slot_index: int):
 	if slot_index < 0 or slot_index >= inventory_items.size():
 		return
 	
-	inventory_items[slot_index] = null
+	inventory_items.remove_at(slot_index)
 	
-	var slot = inventory_bar.get_child(slot_index)
-	var icon = slot.get_node("ItemIcon")
-	icon.texture = null
+	if slot_index < inventory_slot_nodes.size():
+		var slot = inventory_slot_nodes[slot_index]
+		inventory_slot_nodes.remove_at(slot_index)
+		slot.queue_free()
 
 func get_item_at_slot(slot_index: int):
 	if slot_index < 0 or slot_index >= inventory_items.size():

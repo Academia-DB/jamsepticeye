@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://c8ihfsq4kyjo8"]
+
+[ext_resource type="Texture2D" uid="uid://c502na2jeqcpo" path="res://models/Tiles133D_1K-PNG_Color.png" id="1_ouyxy"]
+[ext_resource type="Texture2D" uid="uid://chxedia7lc7d3" path="res://models/Tiles133D_1K-PNG_AmbientOcclusion.png" id="2_w1mop"]
+[ext_resource type="Texture2D" uid="uid://q3u5cqinsdbk" path="res://models/Tiles133D_1K-PNG_Displacement.png" id="3_0e3r1"]
+[ext_resource type="Texture2D" uid="uid://d3s0s0pqoga7m" path="res://models/Tiles133D_1K-PNG_NormalDX.png" id="4_joi8t"]
+[ext_resource type="Texture2D" uid="uid://bx1at3an0ajgc" path="res://models/Tiles133D_1K-PNG_Roughness.png" id="5_7y3em"]
+
+[resource]
+albedo_color = Color(0.8002569, 0.8086901, 0.7890959, 1)
+albedo_texture = ExtResource("1_ouyxy")
+roughness_texture = ExtResource("5_7y3em")
+normal_enabled = true
+normal_texture = ExtResource("4_joi8t")
+ao_enabled = true
+ao_texture = ExtResource("2_w1mop")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_0e3r1")
+uv1_scale = Vector3(1, 2, 1)
